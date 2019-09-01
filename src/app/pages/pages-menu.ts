@@ -11,6 +11,35 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'FEATURES',
     group: true,
   },
+
+  {
+    title: 'Moneda',
+    icon: 'radio-button-on-outline',
+    children: [
+      {
+        title: 'Tirar moneda',
+        link: '/coin/throw-coin',
+      },
+      {
+        title: 'Tirar moneda hasta',
+        link: '/coin/throw-coin-until',
+      },
+    ],
+  },
+  {
+    title: 'Dado',
+    icon: 'square-outline',
+    children: [
+      {
+        title: 'Tirar dado',
+        link: '/dice/roll-dice',
+      },
+      {
+        title: 'Tirar moneda hasta',
+        link: '/dice/roll-dice-until',
+      },
+    ],
+  },
   {
     title: 'Auth',
     icon: 'lock-outline',
