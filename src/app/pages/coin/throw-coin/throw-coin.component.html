@@ -1,1 +1,60 @@
-<h1>Experimiento: Tirar la moneda</h1>
+<nb-card>
+    <nb-card-header>
+        Experimiento: Tirar la moneda
+    </nb-card-header>
+    <nb-card-body class="example-items-rows">
+        <div class="row">
+            <div class="col-md-4">
+                <p>Cantidad de repeticiones</p>
+                <input 
+                nbInput 
+                type="number" 
+                placeholder="Cantidad de repeticiones"
+                name="numberOfExperiments"
+                [(ngModel)]="numberOfExperiments"
+                value="{{ numberOfExperiments }}"/>
+            </div>
+            <div class="col-md-4">
+                <p>Espacio muestral </p>
+                <input 
+                nbInput 
+                type="text" 
+                placeholder="Cantidad de repeticiones"
+                name="omeag"
+                [(ngModel)]="omega"
+                value="{{ omega.join(';') }}" disabled/>
+            </div>
+            <div class="col-md-4">
+                <p>&nbsp;</p>
+                <button nbButton outline status="primary" (click)="startExperiment()">Empezar</button>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-6">
+                <nb-card size="medium">
+                    <nb-card-header>
+                    Resultados
+                    </nb-card-header>
+                    <nb-list style="max-height: 50vh;">
+                        <nb-list-item *ngFor="let result of resultOfExperiment">
+                            {{result.name}}: {{result.total}}
+                        </nb-list-item>
+                    </nb-list>
+                </nb-card>   
+            </div>
+            <div class="col-md-6">
+                <nb-card size="medium">
+                    <nb-card-header>
+                    Log
+                    </nb-card-header>
+                    <nb-list style="max-height: 50vh;">
+                        <nb-list-item *ngFor="let result of resultsLog; let i = index">
+                            #{{i}} - {{result}}
+                        </nb-list-item>
+                    </nb-list>
+                </nb-card>   
+            </div>
+        </div>
+    </nb-card-body>
+</nb-card>
