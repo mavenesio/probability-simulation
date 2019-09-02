@@ -18,11 +18,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Tirar moneda',
-        link: '/coin/throw-coin',
+        link: 'coin/throw-coin',
       },
       {
         title: 'Tirar moneda hasta',
-        link: '/coin/throw-coin-until',
+        link: 'coin/throw-coin-until',
       },
     ],
   },

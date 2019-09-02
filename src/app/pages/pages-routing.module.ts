@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ThrowCoinComponent } from './coin/throw-coin/throw-coin.component';
+import { ThrowCoinUntilComponent } from './coin/throw-coin-until/throw-coin-until.component';
 
 const routes: Routes = [{
   path: '',
@@ -13,9 +15,12 @@ const routes: Routes = [{
       component: DashboardComponent,
     },
     {
-      path: '',
-      redirectTo: 'dashboard',
-      pathMatch: 'full',
+      path: 'coin/throw-coin',
+      component: ThrowCoinComponent,
+    },
+    {
+      path: 'coin/throw-coin-until',
+      component: ThrowCoinUntilComponent,
     },
   ],
 }];
