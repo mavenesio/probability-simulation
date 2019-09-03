@@ -13,10 +13,12 @@ export class ThrowCoinComponent {
   @Input() resultOfExperiment: ExperimentResult[] = [];
   @Input() omega: string[] = ['CARA', 'SECA'];
   @Input() resultsLog: string[] = [];
+  @Input() resultsLogToShow: string[] = [];
   private maxNumberOfExperiments: number = 100000000;
   loading = false;
 
   public startExperiment() {
+    this.resultsLog = [];
     this.loading = true;
     if (this.numberOfExperiments > this.maxNumberOfExperiments) this.maxNumberOfExperiments = this.maxNumberOfExperiments;
     for (let i = 0 ; i < this.numberOfExperiments; i++) {
@@ -27,7 +29,30 @@ export class ThrowCoinComponent {
         this.resultOfExperiment.unshift({name: this.omega[i], total: this.resultsLog.filter((result) => result === this.omega[i]).length});
       }
       this.loading = false,
-      this.resultsLog = [];
+      this.resultsLogToShow = this.resultsLog.slice(1, 2000);
     }, 1000);
   }
+/*
+  public chart = new Chart({
+    chart: {
+      type: 'line'
+    },
+    title: {
+      text: 'Linechart'
+    },
+    credits: {
+      enabled: false
+    },
+    series: [
+      {
+        name: 'Line 1',
+        data: [1, 2, 3]
+      }
+    ]
+  });
+  // add point to chart serie
+  add() {
+    this.chart.addPoint(Math.floor(Math.random() * 10));
+  }
+ */
 }
