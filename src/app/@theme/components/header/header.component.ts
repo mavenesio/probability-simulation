@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService } from '@nebular/theme';
+import {  NbMenuService, NbSidebarService, NbThemeService } from '@nebular/theme';
 
-import { UserData } from '../../../@core/data/users';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
@@ -13,36 +12,13 @@ import { Subject } from 'rxjs';
 export class HeaderComponent implements OnInit, OnDestroy {
 
   private destroy$: Subject<void> = new Subject<void>();
-  userPictureOnly: boolean = false;
-  user: any;
-
-  themes = [
-    {
-      value: 'default',
-      name: 'Light',
-    },
-    {
-      value: 'dark',
-      name: 'Dark',
-    },
-    {
-      value: 'cosmic',
-      name: 'Cosmic',
-    },
-    {
-      value: 'corporate',
-      name: 'Corporate',
-    },
-  ];
 
   currentTheme = 'dark';
 
 
   constructor(private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
-              private themeService: NbThemeService,
-              private userService: UserData,
-              private breakpointService: NbMediaBreakpointsService) {
+              private themeService: NbThemeService) {
   }
 
   ngOnInit() {
@@ -54,12 +30,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .subscribe(themeName => this.currentTheme = themeName);
       this.themeService.changeTheme('dark');
   }
+  toggleSidebar(): boolean {
+    this.sidebarService.toggle(false, 'menu-sidebar');
 
+    return false;
+  }
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
   }
-
   navigateHome() {
     this.menuService.navigateHome();
     return false;

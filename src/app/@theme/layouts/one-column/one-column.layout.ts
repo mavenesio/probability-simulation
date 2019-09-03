@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {  NbMenuService, NbSidebarService, NbThemeService } from '@nebular/theme';
 
 @Component({
   selector: 'ngx-one-column-layout',
@@ -13,11 +14,16 @@ import { Component } from '@angular/core';
         <ng-content select="nb-menu"></ng-content>
       </nb-sidebar>
 
-      <nb-layout-column>
+      <nb-layout-column (click)="toggleSidebar()">
         <ng-content select="router-outlet"></ng-content>
       </nb-layout-column>
 
     </nb-layout>
   `,
 })
-export class OneColumnLayoutComponent {}
+export class OneColumnLayoutComponent {
+  constructor(private sidebarService: NbSidebarService) {}
+  toggleSidebar() {
+    this.sidebarService.collapse('menu-sidebar');
+  }
+}
