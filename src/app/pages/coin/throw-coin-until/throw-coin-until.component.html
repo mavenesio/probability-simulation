@@ -27,10 +27,9 @@
               value="{{ omega.join(';') }}" disabled/>
           </div>
           <div class="col-md-3">
-            <p>Repetir hasta</p>
+            <p>Repetir hasta ver</p>
             <nb-select
             fullWidth
-            [(selected)]="omega[0]"
             placeholder="Select Showcase"
             (selectedChange)="untilOnchange($event)">
               <nb-option *ngFor="let omeguita of omega" value="{{omeguita}}" >{{omeguita}}</nb-option>
@@ -52,12 +51,7 @@
                   Resultados
                   </nb-card-header>
                   <nb-list style="max-height: 50vh;">
-                      <nb-list-item *ngFor="let results of resultsLog">
-                          <nb-list>
-                              <nb-list-item *ngFor="let result of result">
-                                {{result.result}}
-                              </nb-list-item>
-                          </nb-list>
+                      <nb-list-item *ngFor="let results of resultsLog; let i=index">
                       </nb-list-item>
                   </nb-list>
               </nb-card>
@@ -68,6 +62,9 @@
                   Log
                   </nb-card-header>
                   <nb-list style="max-height: 50vh;">
+                      <nb-list-item *ngFor="let results of resultsLog; let i=index">
+                        #{{i}}: ({{results.length}}) {{results}} 
+                      </nb-list-item>
                   </nb-list>
               </nb-card>
           </div>

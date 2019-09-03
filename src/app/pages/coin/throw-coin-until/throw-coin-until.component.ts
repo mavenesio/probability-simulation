@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
 
 type ExperimentResult = {
-  result: string, total: number
+  result: string,
+  total: number,
 };
 @Component({
   selector: 'ngx-throw-coin-until',
@@ -11,24 +12,28 @@ export class ThrowCoinUntilComponent {
   @Input() numberOfExperiments: number = 2000;
   @Input() resultOfExperiment: ExperimentResult[] = [];
   @Input() omega: string[] = ['CARA', 'SECA'];
-  @Input() resultsLog: string[][];
-  private maxNumberOfExperiments: number = 100000;
-  private selectedUntil: string = 'CARA';
+  @Input() resultsLog: any[];
+  private maxNumberOfExperiments: number = 2000;
+  private selectedUntil: string;
   public loading: boolean = false;
 
 
   public startExperiment() {
+    if(this.selectedUntil === undefined || this.selectedUntil === null) return
     this.loading = true;
     if (this.numberOfExperiments > this.maxNumberOfExperiments) this.maxNumberOfExperiments = this.maxNumberOfExperiments;
-
+    this.resultsLog = [];
     for (let i = 0 ; i < this.numberOfExperiments; i++) {
       let experimentIsOver = false;
+      const experiment: string[] = [];
       while (!experimentIsOver) {
-        this.resultsLog[i].push(this.omega[Math.round(Math.random())]);
-        experimentIsOver = (this.omega[Math.round(Math.random())] === this.selectedUntil);
+        const cointThrow = this.omega[Math.round(Math.random())];
+        experiment.push(cointThrow);
+        experimentIsOver = (cointThrow === this.selectedUntil);
       }
+      this.resultsLog.push(experiment);
     }
-    this.loading = true;
+    this.loading = false;
   }
   untilOnchange(event) {
     this.selectedUntil = event;
