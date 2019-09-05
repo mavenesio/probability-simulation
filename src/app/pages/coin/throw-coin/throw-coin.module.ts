@@ -7,6 +7,7 @@ import { NbCardModule,
    NbSelectModule } from '@nebular/theme';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ThemeModule } from '../../../@theme/theme.module';
+import { PieChartModule } from '@swimlane/ngx-charts';
 
 import { ThrowCoinComponent } from './throw-coin.component';
 
@@ -21,6 +22,7 @@ import { ThrowCoinComponent } from './throw-coin.component';
     NbListModule,
     NbSpinnerModule,
     NbSelectModule,
+    PieChartModule,
   ],
   declarations: [
     ThrowCoinComponent,
