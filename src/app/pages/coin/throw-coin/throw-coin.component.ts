@@ -27,7 +27,7 @@ export class ThrowCoinComponent {
   public startExperiment() {
     this.resultsLog = [];
     this.loading = true;
-    if (this.numberOfExperiments > this.maxNumberOfExperiments) this.maxNumberOfExperiments = this.maxNumberOfExperiments;
+    if (this.numberOfExperiments > this.maxNumberOfExperiments) this.numberOfExperiments = this.maxNumberOfExperiments;
     for (let i = 0 ; i < this.numberOfExperiments; i++) {
       this.resultsLog.push(this.omega[Math.round(Math.random())]);
     }
