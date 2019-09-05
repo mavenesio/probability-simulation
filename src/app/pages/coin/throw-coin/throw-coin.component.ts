@@ -14,7 +14,10 @@ export class ThrowCoinComponent {
   @Input() omega: string[] = ['CARA', 'SECA'];
   @Input() resultsLog: string[] = [];
   @Input() resultsLogToShow: string[] = [];
+  @Input() flipped: boolean = false;
 
+
+  toggleView() { this.flipped = !this.flipped; }
   private maxNumberOfExperiments: number = 100000000;
 
   public loading = false;
