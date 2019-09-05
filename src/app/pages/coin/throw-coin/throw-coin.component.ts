@@ -14,8 +14,12 @@ export class ThrowCoinComponent {
   @Input() omega: string[] = ['CARA', 'SECA'];
   @Input() resultsLog: string[] = [];
   @Input() resultsLogToShow: string[] = [];
+
   private maxNumberOfExperiments: number = 100000000;
-  loading = false;
+
+  public loading = false;
+  public view: number[] = [700, 400];
+  public data: any[] = [];
 
   public startExperiment() {
     this.resultsLog = [];
@@ -27,9 +31,9 @@ export class ThrowCoinComponent {
     setTimeout(() => {
       for (let i = 0 ; i < this.omega.length; i++) {
         this.resultOfExperiment.unshift({name: this.omega[i], total: this.resultsLog.filter((result) => result === this.omega[i]).length});
+        this.data.push({name: this.omega[i], value: this.resultsLog.filter((result) => result === this.omega[i]).length});
       }
-      this.loading = false,
-      this.resultsLogToShow = this.resultsLog.slice(1, 2000);
+      this.loading = false;
     }, 1000);
   }
 }
