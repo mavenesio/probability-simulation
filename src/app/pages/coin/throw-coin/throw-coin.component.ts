@@ -21,7 +21,6 @@ export class ThrowCoinComponent {
   private maxNumberOfExperiments: number = 100000000;
 
   public loading = false;
-  public view: number[] = [700, 400];
   public data: any[] = [];
 
   public startExperiment() {

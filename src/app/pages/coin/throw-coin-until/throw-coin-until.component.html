@@ -1,78 +1,115 @@
-<nb-card>
-  <nb-card-header>
-      Experimiento: Tirar la moneda hasta
-  </nb-card-header>
-  <nb-card-body class="example-items-rows">
-      <div class="row">
-          <div class="col-md-3">
-              <p>Cantidad de repeticiones</p>
-              <input
-              nbInput
-              fullWidth
-              type="number"
-              placeholder="Cantidad de repeticiones"
-              name="numberOfExperiments"
-              [(ngModel)]="numberOfExperiments"
-              value="{{ numberOfExperiments }}"/>
-          </div>
-          <div class="col-md-3">
-              <p>Espacio muestral </p>
-              <input
-              nbInput
-              fullWidth
-              type="text"
-              placeholder="Cantidad de repeticiones"
-              name="omeag"
-              [(ngModel)]="omega"
-              value="{{ omega.join(';') }}" disabled/>
-          </div>
-          <div class="col-md-3">
-            <p>Repetir hasta ver</p>
-            <nb-select
-            fullWidth
-            placeholder="Select Showcase"
-            (selectedChange)="untilOnchange($event)">
-              <nb-option *ngFor="let omeguita of omega" value="{{omeguita}}" >{{omeguita}}</nb-option>
-            </nb-select>
-          </div>
-          <div class="col-md-3">
-              <p>&nbsp;</p>
-              <button nbButton outline status="primary" (click)="startExperiment()"
-              [nbSpinner]="loading" nbSpinnerStatus="primary" nbSpinnerSize="large" nbSpinnerMessage="">
-              Empezar
-      </button>
-          </div>
-      </div>
-      <br/>
-      <div class="row">
-          <div class="col-md-6" *ngIf="resultOfExperiment.length > 0">
-              <nb-card size="medium">
-                  <nb-card-header>
-                  Resultados
-                  </nb-card-header>
-                  <nb-card-body>
-                      <nb-list style="max-height: 50vh;">
-                        <nb-list-item *ngFor="let results of resultOfExperiment; let i=index">
-                          Salio cara en {{results.result}} intentos. ({{results.total}} veces)
-                        </nb-list-item>
-                      </nb-list>
-                  </nb-card-body>
-              </nb-card>
-          </div>
-          <div class="col-md-6" *ngIf="resultsLog.length > 0">
-              <nb-card size="medium">
-                  <nb-card-header>
-                  Log
-                  </nb-card-header>
-                <nb-card-body>
-                  <nb-list style="max-height: 50vh;">
-                    <nb-list-item *ngFor="let results of resultsLog; let i=index">
-                        #{{i}}: ({{results.length}}) {{results}}
-                    </nb-list-item>
-                  </nb-list>
-                </nb-card-body>
-              </nb-card>
-          </div>
-      </div>
-  </nb-card-body>
-</nb-card>
+
+<nb-flip-card [showToggleButton]="false" [flipped]="flipped">
+    <nb-card-front>
+        <nb-card>
+            <nb-card-header>
+                <i class="nb-shuffle" (click)="toggleView()"></i> 
+                Experimiento: Tirar la moneda hasta
+            </nb-card-header>
+            <nb-card-body class="example-items-rows">
+                <div class="row">
+                    <div class="col-md-3">
+                        <p>Cantidad de repeticiones</p>
+                        <input
+                        nbInput
+                        fullWidth
+                        type="number"
+                        placeholder="Cantidad de repeticiones"
+                        name="numberOfExperiments"
+                        [(ngModel)]="numberOfExperiments"
+                        value="{{ numberOfExperiments }}"/>
+                    </div>
+                    <div class="col-md-3">
+                        <p>Espacio muestral </p>
+                        <input
+                        nbInput
+                        fullWidth
+                        type="text"
+                        placeholder="Cantidad de repeticiones"
+                        name="omeag"
+                        [(ngModel)]="omega"
+                        value="{{ omega.join(';') }}" disabled/>
+                    </div>
+                    <div class="col-md-3">
+                      <p>Repetir hasta ver</p>
+                      <nb-select
+                      fullWidth
+                      placeholder="Select Showcase"
+                      (selectedChange)="untilOnchange($event)">
+                        <nb-option *ngFor="let omeguita of omega" value="{{omeguita}}" >{{omeguita}}</nb-option>
+                      </nb-select>
+                    </div>
+                    <div class="col-md-3">
+                        <p>&nbsp;</p>
+                        <button nbButton outline status="primary" (click)="startExperiment()"
+                        [nbSpinner]="loading" nbSpinnerStatus="primary" nbSpinnerSize="large" nbSpinnerMessage="">
+                        Empezar
+                </button>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-md-6" *ngIf="resultOfExperiment.length > 0">
+                        <nb-card size="medium">
+                            <nb-card-header>
+                            Resultados
+                            </nb-card-header>
+                            <nb-card-body>
+                                <nb-list style="max-height: 50vh;">
+                                  <nb-list-item *ngFor="let results of resultOfExperiment; let i=index">
+                                    Salio cara en {{results.result}} intentos. ({{results.total}} veces)
+                                  </nb-list-item>
+                                </nb-list>
+                            </nb-card-body>
+                        </nb-card>
+                    </div>
+                    <div class="col-md-6" *ngIf="resultsLog.length > 0">
+                        <nb-card size="medium">
+                            <nb-card-header>
+                            Graficos
+                            </nb-card-header>
+                          <nb-card-body>
+                              <ngx-charts-bar-horizontal
+                              [results]="data"
+                              legendTitle="Tiradas"
+                              legend="true"
+                              showDataLabel="true"
+                              scheme="nightLights">
+                            </ngx-charts-bar-horizontal>
+                          </nb-card-body>
+                        </nb-card>
+                    </div>
+                    <!--
+                    <div class="col-md-6" *ngIf="resultsLog.length > 0">
+                        <nb-card size="medium">
+                            <nb-card-header>
+                            Log
+                            </nb-card-header>
+                          <nb-card-body>
+                            <nb-list style="max-height: 50vh;">
+                              <nb-list-item *ngFor="let results of resultsLog; let i=index">
+                                  #{{i}}: ({{results.length}}) {{results}}
+                              </nb-list-item>
+                            </nb-list>
+                          </nb-card-body>
+                        </nb-card>
+                    </div>
+                    -->
+                </div>
+            </nb-card-body>
+          </nb-card>
+    </nb-card-front>
+    <nb-card-back>
+      <nb-card>
+        <nb-card-header>
+          <i class="nb-shuffle" (click)="toggleView()"></i> 
+          Teoria
+        </nb-card-header>
+        <nb-card-body>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare tristique suscipit. Pellentesque tincidunt at erat eu aliquet. Morbi sapien odio, feugiat at posuere vitae, volutpat nec turpis. In nulla leo, porttitor et tincidunt a, semper in ipsum. Quisque iaculis risus ut rutrum auctor. Proin at rhoncus massa, iaculis rutrum sem. Vestibulum ultrices lacinia erat, eu lacinia eros dapibus ac. Integer pellentesque vel tellus ornare venenatis. Ut vulputate ligula vulputate lacus aliquet lacinia. Etiam efficitur tristique ex id hendrerit.
+            Cras non mi malesuada, pharetra neque nec, interdum nisl. Donec sapien lacus, ornare ut mauris vitae, rhoncus luctus ex. Duis metus ligula, mollis non mi eu, semper vestibulum ligula. Nam egestas nulla lacus, eu suscipit quam iaculis eget. Proin dolor nunc, semper a quam at, maximus sagittis ipsum. Sed tincidunt felis non tincidunt aliquam. Nunc finibus posuere interdum. Phasellus iaculis dignissim tellus, at faucibus mi varius lacinia. Cras cursus mi nulla, eget dignissim nisl egestas eu. Nunc lacinia, ante nec tincidunt tincidunt, mi est dignissim ex, a iaculis justo velit a lorem. Phasellus at posuere lectus.
+            Maecenas convallis purus et sapien porta, ac dignissim metus aliquam. Donec at ultrices erat. Integer ut neque dignissim, congue augue at, aliquet ex. Etiam semper justo feugiat, dignissim nibh ut, dictum sem. Duis tristique interdum tempor. Integer fermentum lacus at leo blandit pretium. Phasellus quis velit lectus. Etiam et gravida elit. Curabitur molestie lorem eget arcu ultricies, ut fringilla justo pharetra. Integer commodo nisl purus, sit amet placerat odio varius a. Duis pellentesque sed urna eget condimentum. Suspendisse finibus, ante at tincidunt dictum, massa tortor consequat nisi, sit amet venenatis urna mi ut dui.
+        </nb-card-body>
+      </nb-card>
+    </nb-card-back>
+  </nb-flip-card>

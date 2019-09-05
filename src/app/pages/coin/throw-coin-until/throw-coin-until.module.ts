@@ -8,6 +8,8 @@ import { NbCardModule,
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { ThemeModule } from '../../../@theme/theme.module';
+import { BarChartModule } from '@swimlane/ngx-charts';
+
 import { ThrowCoinUntilComponent } from './throw-coin-until.component';
 
 @NgModule({
@@ -21,6 +23,7 @@ import { ThrowCoinUntilComponent } from './throw-coin-until.component';
     NbListModule,
     NbSpinnerModule,
     NbSelectModule,
+    BarChartModule,
   ],
   declarations: [
     ThrowCoinUntilComponent,
