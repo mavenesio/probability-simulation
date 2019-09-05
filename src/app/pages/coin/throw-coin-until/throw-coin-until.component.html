@@ -45,27 +45,32 @@
       </div>
       <br/>
       <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-6" *ngIf="resultOfExperiment.length > 0">
               <nb-card size="medium">
                   <nb-card-header>
                   Resultados
                   </nb-card-header>
-                  <nb-list style="max-height: 50vh;">
-                      <nb-list-item *ngFor="let results of resultsLog; let i=index">
-                      </nb-list-item>
-                  </nb-list>
+                  <nb-card-body>
+                      <nb-list style="max-height: 50vh;">
+                        <nb-list-item *ngFor="let results of resultOfExperiment; let i=index">
+                          Salio cara en {{results.result}} intentos. ({{results.total}} veces)
+                        </nb-list-item>
+                      </nb-list>
+                  </nb-card-body>
               </nb-card>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6" *ngIf="resultsLog.length > 0">
               <nb-card size="medium">
                   <nb-card-header>
                   Log
                   </nb-card-header>
+                <nb-card-body>
                   <nb-list style="max-height: 50vh;">
-                      <nb-list-item *ngFor="let results of resultsLog; let i=index">
-                        #{{i}}: ({{results.length}}) {{results}} 
-                      </nb-list-item>
+                    <nb-list-item *ngFor="let results of resultsLog; let i=index">
+                        #{{i}}: ({{results.length}}) {{results}}
+                    </nb-list-item>
                   </nb-list>
+                </nb-card-body>
               </nb-card>
           </div>
       </div>
