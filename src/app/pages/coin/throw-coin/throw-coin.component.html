@@ -37,8 +37,8 @@
                     </div>
                 </div>
                 <br/>
-                <div class="row">
-                    <div class="col-md-6">
+                <div class="row" >
+                    <div class="col-md-6" *ngIf="resultOfExperiment.length > 0">
                         <nb-card size="medium">
                             <nb-card-header>
                             Resultados
@@ -50,7 +50,7 @@
                             </nb-list>
                         </nb-card>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6" *ngIf="resultsLogToShow.length > 0">
                         <nb-card size="medium">
                             <nb-card-header>
                             Log
@@ -72,9 +72,10 @@
             Grafico del ultimo experimento
         </nb-card-header>
         <nb-card-body>
-
+<!--
                 <button (click)="add()">Add Point!</button>
                 <div [chart]="chart"></div>
+-->
         </nb-card-body>
       </nb-card>
     </nb-card-back>
