@@ -10,7 +10,6 @@ import { ThemeModule } from '../../../@theme/theme.module';
 
 import { ThrowCoinComponent } from './throw-coin.component';
 
-import { ChartModule } from 'angular-highcharts';
 @NgModule({
   imports: [
     NbCardModule,
@@ -22,7 +21,6 @@ import { ChartModule } from 'angular-highcharts';
     NbListModule,
     NbSpinnerModule,
     NbSelectModule,
-    ChartModule,
   ],
   declarations: [
     ThrowCoinComponent,
