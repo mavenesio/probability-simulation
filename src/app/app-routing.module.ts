@@ -12,9 +12,10 @@ import {
 const routes: Routes = [
   {
     path: 'pages',
-    loadChildren: () => import('app/pages/pages.module')
+    loadChildren: () => import('./pages/pages.module')
       .then(m => m.PagesModule),
   },
+  /*
   {
     path: 'auth',
     component: NbAuthComponent,
@@ -45,8 +46,9 @@ const routes: Routes = [
       },
     ],
   },
-  { path: '', redirectTo: 'pages', pathMatch: 'full' },
-  { path: '**', redirectTo: 'pages' },
+  */
+  { path: '', redirectTo: 'pages/dashboard', pathMatch: 'full' },
+  { path: '**', redirectTo: 'pages/dashboard' },
 ];
 
 const config: ExtraOptions = {
