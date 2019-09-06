@@ -31,12 +31,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'square-outline',
     children: [
       {
-        title: 'Tirar dado',
-        link: '/dice/roll-dice',
-      },
-      {
         title: 'Tirar moneda hasta',
-        link: '/dice/roll-dice-until',
+        link: 'dice/roll-dice-until',
       },
     ],
   },

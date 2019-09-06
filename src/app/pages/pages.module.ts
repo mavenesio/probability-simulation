@@ -8,6 +8,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { ThrowCoinModule } from './coin/throw-coin/throw-coin.module';
 import { ThrowCoinUntilModule } from './coin/throw-coin-until/throw-coin-until.module';
+import { RollDiceModule } from './dice/roll-dice.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,9 @@ import { ThrowCoinUntilModule } from './coin/throw-coin-until/throw-coin-until.m
     ThemeModule,
     NbMenuModule,
     DashboardModule,
-    ThrowCoinModule,ThrowCoinUntilModule,
+    ThrowCoinModule,
+    ThrowCoinUntilModule,
+    RollDiceModule,
   ],
   declarations: [
     PagesComponent,

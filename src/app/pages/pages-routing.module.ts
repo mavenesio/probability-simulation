@@ -2,9 +2,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
+
 import { ThrowCoinComponent } from './coin/throw-coin/throw-coin.component';
 import { ThrowCoinUntilComponent } from './coin/throw-coin-until/throw-coin-until.component';
+import { RollDiceComponent } from './dice/roll-dice.component';
 
 const routes: Routes = [{
   path: '',
@@ -21,6 +24,10 @@ const routes: Routes = [{
     {
       path: 'coin/throw-coin-until',
       component: ThrowCoinUntilComponent,
+    },
+    {
+      path: 'dice/roll-dice-until',
+      component: RollDiceComponent,
     },
   ],
 }];
