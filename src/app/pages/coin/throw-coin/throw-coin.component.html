@@ -8,7 +8,7 @@
             </nb-card-header>
             <nb-card-body class="example-items-rows">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                         <p>Cantidad de repeticiones</p>
                         <input
                         nbInput
@@ -19,7 +19,7 @@
                         [(ngModel)]="numberOfExperiments"
                         value="{{ numberOfExperiments }}"/>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                         <p>Espacio muestral </p>
                         <input
                         nbInput
@@ -30,7 +30,7 @@
                         [(ngModel)]="omega"
                         value="{{ omega.join(';') }}" disabled/>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                         <p>&nbsp;</p>
                         <button nbButton outline status="primary" (click)="startExperiment()"
                         [nbSpinner]="loading" nbSpinnerStatus="primary" nbSpinnerSize="large" nbSpinnerMessage="">
@@ -40,7 +40,7 @@
                 </div>
                 <br/>
                 <div class="row" >
-                    <div class="col-md-4" *ngIf="resultOfExperiment.length > 0">
+                    <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4" *ngIf="resultOfExperiment.length > 0">
                         <nb-card size="medium">
                             <nb-card-header>
                             Resultados
@@ -52,18 +52,16 @@
                             </nb-list>
                         </nb-card>
                     </div>
-                    <div class="col-md-8" *ngIf="data.length > 0">
+                    <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8" *ngIf="data.length > 0">
                         <nb-card size="medium">
                             <nb-card-header>
                               Grafico del ultimo experimento
                             </nb-card-header>
-                            <nb-card-body>
                                 <ngx-charts-pie-grid
                                 [results]="data"
                                 legend="true"
                                 scheme="nightLights">
                               </ngx-charts-pie-grid>
-                            </nb-card-body>
                         </nb-card>
                     </div>
                 </div>

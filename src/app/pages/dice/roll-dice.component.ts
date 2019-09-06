@@ -31,6 +31,7 @@ constructor() {
     this.selectedConditionHasResult = (this.selectedCondition !== 'Par' && this.selectedCondition !== 'Impar' );
   }
   public NumberOfChange() {
+    this.maxResults = [];
     const max: number = this.numberOfDices * this.numberOfFaces;
     for ( let i = 1; i <= max ; i++) {
       this.maxResults.push(i);
