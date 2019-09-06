@@ -10,18 +10,15 @@ type ExperimentResult = {
 })
 export class ThrowCoinComponent {
   @Input() numberOfExperiments: number = 2000;
-  @Input() resultOfExperiment: ExperimentResult[] = [];
-  @Input() omega: string[] = ['CARA', 'SECA'];
-  @Input() resultsLog: string[] = [];
-  @Input() resultsLogToShow: string[] = [];
-  @Input() flipped: boolean = false;
-
-
-  toggleView() { this.flipped = !this.flipped; }
-  private maxNumberOfExperiments: number = 100000000;
-
+  public resultOfExperiment: ExperimentResult[] = [];
+  public omega: string[] = ['CARA', 'SECA'];
+  public resultsLog: string[] = [];
+  public resultsLogToShow: string[] = [];
+  public flipped: boolean = false;
   public loading = false;
   public data: any[] = [];
+
+  private maxNumberOfExperiments: number = 100000000;
 
   public startExperiment() {
     this.resultsLog = [];
@@ -39,4 +36,6 @@ export class ThrowCoinComponent {
       this.loading = false;
     }, 1000);
   }
+
+  public toggleView() { this.flipped = !this.flipped; }
 }
