@@ -18,13 +18,13 @@ export class ThrowCoinUntilComponent {
   public flipped: boolean = false;
   public data: any[] = [];
 
-  private maxNumberOfExperiments: number = 2000;
+  private maxNumberOfExperiments: number = 1000000;
   private selectedUntil: string;
 
   public startExperiment() {
     if (this.selectedUntil === undefined || this.selectedUntil === null) return;
     this.loading = true;
-    if (this.numberOfExperiments > this.maxNumberOfExperiments) this.maxNumberOfExperiments = this.maxNumberOfExperiments;
+    if (this.numberOfExperiments > this.maxNumberOfExperiments) this.numberOfExperiments = this.maxNumberOfExperiments;
     this.resultsLog = [];
     for (let i = 0 ; i < this.numberOfExperiments; i++) {
       let experimentIsOver = false;
