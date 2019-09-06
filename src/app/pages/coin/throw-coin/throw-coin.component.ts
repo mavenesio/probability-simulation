@@ -31,6 +31,7 @@ export class ThrowCoinComponent {
       this.resultsLog.push(this.omega[Math.round(Math.random())]);
     }
     setTimeout(() => {
+      this.data = [];
       for (let i = 0 ; i < this.omega.length; i++) {
         this.resultOfExperiment.unshift({name: this.omega[i], total: this.resultsLog.filter((result) => result === this.omega[i]).length});
         this.data.push({name: this.omega[i], value: this.resultsLog.filter((result) => result === this.omega[i]).length});
