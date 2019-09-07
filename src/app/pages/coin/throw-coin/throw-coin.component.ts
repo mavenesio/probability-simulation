@@ -1,8 +1,6 @@
 import { Component, Input } from '@angular/core';
-
-type ExperimentResult = {
-  name: string, total: number
-};
+import { CoinService } from '../../../services/coin.service';
+import { ThrowCoinResult } from '../../../models/throw-coin-result';
 
 @Component({
   selector: 'ngx-throw-coin',
@@ -10,32 +8,30 @@ type ExperimentResult = {
 })
 export class ThrowCoinComponent {
   @Input() numberOfExperiments: number = 2000;
-  public resultOfExperiment: ExperimentResult[] = [];
-  public omega: string[] = ['CARA', 'SECA'];
-  public resultsLog: string[] = [];
-  public resultsLogToShow: string[] = [];
+  public resultOfExperiment: ThrowCoinResult[] = [];
   public flipped: boolean = false;
   public loading = false;
-  public data: any[] = [];
-
+  public view = [500, 300];
   private maxNumberOfExperiments: number = 100000000;
 
-  public startExperiment() {
-    this.resultsLog = [];
-    this.loading = true;
-    if (this.numberOfExperiments > this.maxNumberOfExperiments) this.numberOfExperiments = this.maxNumberOfExperiments;
-    for (let i = 0 ; i < this.numberOfExperiments; i++) {
-      this.resultsLog.push(this.omega[Math.round(Math.random())]);
-    }
-    setTimeout(() => {
-      this.data = [];
-      for (let i = 0 ; i < this.omega.length; i++) {
-        this.resultOfExperiment.unshift({name: this.omega[i], total: this.resultsLog.filter((result) => result === this.omega[i]).length});
-        this.data.push({name: this.omega[i], value: this.resultsLog.filter((result) => result === this.omega[i]).length});
-      }
-      this.loading = false;
-    }, 1000);
-  }
+  constructor(private _coinService: CoinService) {}
 
-  public toggleView() { this.flipped = !this.flipped; }
+  public startExperiment() {
+    this.loading = true;
+    this.validate();
+    this.cleanResults();
+    this.resultOfExperiment = this._coinService.throwCoin(this.numberOfExperiments);
+    this.loading = false;
+  }
+  public validate(): void {
+    if (this.numberOfExperiments > this.maxNumberOfExperiments) {
+      this.numberOfExperiments = this.maxNumberOfExperiments;
+    }
+  }
+  public cleanResults(): void {
+    this.resultOfExperiment = [];
+  }
+  public toggleView() {
+    this.flipped = !this.flipped;
+  }
 }

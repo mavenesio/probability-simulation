@@ -8,7 +8,7 @@
             </nb-card-header>
             <nb-card-body class="example-items-rows">
                 <div class="row">
-                    <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                    <div class="col-md-4">
                         <p>Cantidad de repeticiones</p>
                         <input
                         nbInput
@@ -19,7 +19,7 @@
                         [(ngModel)]="numberOfExperiments"
                         value="{{ numberOfExperiments }}"/>
                     </div>
-                    <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                    <div class="col-md-4">
                         <p>Espacio muestral </p>
                         <input
                         nbInput
@@ -27,42 +27,47 @@
                         type="text"
                         placeholder="Cantidad de repeticiones"
                         name="omeag"
-                        [(ngModel)]="omega"
-                        value="{{ omega.join(';') }}" disabled/>
+                        value="CARA , SECA" disabled/>
                     </div>
-                    <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                    <div class="col-md-2">
                         <p>&nbsp;</p>
                         <button nbButton outline status="primary" (click)="startExperiment()"
-                        [nbSpinner]="loading" nbSpinnerStatus="primary" nbSpinnerSize="large" nbSpinnerMessage="">
+                        [nbSpinner]="loading" [disabled]="loading" nbSpinnerStatus="primary" nbSpinnerSize="large" nbSpinnerMessage="">
                         Empezar
-                </button>
+                        </button>
+                    </div>
+                    <div class="col-md-2">
+                        <p>&nbsp;</p>
+                        <button nbButton outline status="primary" (click)="cleanResults()"
+                        [nbSpinner]="loading" [disabled]="loading" nbSpinnerStatus="primary" nbSpinnerSize="large" nbSpinnerMessage="">
+                        Limpiar
+                        </button>
                     </div>
                 </div>
                 <br/>
                 <div class="row" >
-                    <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4" *ngIf="resultOfExperiment.length > 0">
-                        <nb-card size="medium">
-                            <nb-card-header>
-                            Resultados
-                            </nb-card-header>
-                            <nb-list style="max-height: 50vh;">
-                                <nb-list-item *ngFor="let result of resultOfExperiment">
-                                    {{result.name}}: {{result.total}}
-                                </nb-list-item>
-                            </nb-list>
-                        </nb-card>
+                    <div class="col-md-4" *ngIf="resultOfExperiment.length > 0">
+                      <h1>
+                      Resultados
+                      </h1>
+                      <nb-list style="max-height: 50vh;">
+                          <nb-list-item *ngFor="let result of resultOfExperiment">
+                              {{result.name}}: {{result.value}}
+                          </nb-list-item>
+                      </nb-list>
                     </div>
-                    <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8" *ngIf="data.length > 0">
-                        <nb-card size="medium">
-                            <nb-card-header>
-                              Grafico del ultimo experimento
-                            </nb-card-header>
-                                <ngx-charts-pie-grid
-                                [results]="data"
-                                legend="true"
-                                scheme="nightLights">
-                              </ngx-charts-pie-grid>
-                        </nb-card>
+                    <div class="col-md-8" style="max-height: 50vh;" *ngIf="resultOfExperiment.length > 0">
+                      <h1>
+                        Grafico del ultimo experimento
+                      </h1>
+                      <div style="max-height: 50vh;">
+                          <ngx-charts-pie-grid
+                          [view]="view"
+                          [results]="resultOfExperiment"
+                          legend="true"
+                          scheme="nightLights">
+                        </ngx-charts-pie-grid>
+                      </div>
                     </div>
                 </div>
             </nb-card-body>
