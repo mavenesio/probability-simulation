@@ -69,6 +69,31 @@
                     </button>
                 </div>
             </div>
+            <div class="row" >
+                <div class="col-md-4" *ngIf="resultOfExperiment.length > 0">
+                  <h1>
+                  Resultados
+                  </h1>
+                  <nb-list style="max-height: 50vh;">
+                      <nb-list-item *ngFor="let result of resultOfExperiment">
+                          {{result.name}}: {{result.value}}
+                      </nb-list-item>
+                  </nb-list>
+                </div>
+                <div class="col-md-8" style="max-height: 50vh;" *ngIf="resultOfExperiment.length > 0">
+                  <h1>
+                    Grafico del ultimo experimento
+                  </h1>
+                  <div style="max-height: 50vh;">
+                      <ngx-charts-pie-grid
+                      [view]="view"
+                      [results]="resultOfExperiment"
+                      legend="true"
+                      scheme="nightLights">
+                    </ngx-charts-pie-grid>
+                  </div>
+                </div>
+            </div>
           </nb-card-body>
       </nb-card>
   </nb-card-front>
