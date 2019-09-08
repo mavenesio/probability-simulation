@@ -9,12 +9,11 @@ export class CoinService {
 
   constructor() { }
 
-
   public throwCoin(repetitions: number): ThrowCoinResult[] {
     // experiment
     const resultsLog = [];
     for (let i = 0 ; i < repetitions; i++) {
-      resultsLog.push(this.omega[Math.round(Math.random())]);
+      resultsLog.push(this.getThrownOutCoin());
     }
     // parse experiment
     return(
@@ -30,7 +29,7 @@ export class CoinService {
       let experimentIsOver = false;
       let count: number = 0;
       while (!experimentIsOver) {
-        const cointThrow = this.omega[Math.round(Math.random())];
+        const cointThrow = this.getThrownOutCoin();
         count++;
         experimentIsOver = (cointThrow === until);
       }
@@ -40,8 +39,10 @@ export class CoinService {
     return this.getResults(resultsLog);
   }
 
-
   // private functions
+  private getThrownOutCoin(): string {
+    return this.omega[Math.round(Math.random())];
+  }
   private getResults(resultsLog: number[] ): ThrowCoinResult[] {
     const experimentResults =  resultsLog
             .reduce( (a, b) => (
@@ -50,7 +51,6 @@ export class CoinService {
             .value++, a), []);
     return this.sortExperimentResults(experimentResults);
   }
-
   private sortExperimentResults(results: ThrowCoinResult[]): ThrowCoinResult[] {
     return results.sort((a , b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
   }
