@@ -43,6 +43,7 @@ export class CoinService {
   private getThrownOutCoin(): string {
     return this.omega[Math.round(Math.random())];
   }
+
   private getResults(resultsLog: number[] ): ThrowCoinResult[] {
     const experimentResults =  resultsLog
             .reduce( (a, b) => (
@@ -51,8 +52,8 @@ export class CoinService {
             .value++, a), []);
     return this.sortExperimentResults(experimentResults);
   }
+
   private sortExperimentResults(results: ThrowCoinResult[]): ThrowCoinResult[] {
     return results.sort((a , b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
   }
-
 }
