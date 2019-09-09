@@ -6,15 +6,23 @@ import { NormalizedResult } from '../models/normalized-result';
   providedIn: 'root',
 })
 export class DiceService {
-  public conditions = ['Igual', 'Mayor', 'Mayor o Igual', 'Menor', 'Menor o Igual', 'Par', 'Impar', 'salga'];
+  public conditions = [{name : 'Igual', needResult: true},
+                       {name : 'Mayor', needResult: true},
+                       {name : 'Mayor o Igual', needResult: true},
+                       {name : 'Menor', needResult: true},
+                       {name : 'Menor o Igual', needResult: true},
+                       {name : 'Par', needResult: false},
+                       {name : 'Impar', needResult: false},
+                       {name : 'salga', needResult: true}];
 
   constructor() { }
 
-  public getConditions(): string[] {
+  public getConditions(): any[] {
     return this.conditions;
   }
 
-  public getResultOfDiceExperiment(numberOfDices: number, numberOfFaces: number, condition: string,
+  public getResultOfDiceExperiment(numberOfDices: number
+                       , numberOfFaces: number, condition: string,
                                   conditionResult: number, repetitions: number): RollDiceResult[] {
     const result = [];
     for (let i = 0; i < repetitions; i++) {
@@ -53,35 +61,35 @@ export class DiceService {
   private complyTheCondition(rollDiceResults: number[], condition: string, conditionResult: number): RollDiceResult {
     let result;
     switch (condition) {
-      case this.conditions[0]:
+      case this.conditions[0].name:
           // equal
           result = rollDiceResults.reduce((a, b) => a + b, 0) === conditionResult;
         break;
-        case this.conditions[1]:
+        case this.conditions[1].name:
           // greater than
           result = conditionResult > rollDiceResults.reduce((a, b) => a + b, 0);
         break;
-        case this.conditions[2]:
+        case this.conditions[2].name:
           // greater than or equal
           result = conditionResult >= rollDiceResults.reduce((a, b) => a + b, 0);
         break;
-        case this.conditions[3]:
+        case this.conditions[3].name:
           // less than
           result = conditionResult < rollDiceResults.reduce((a, b) => a + b, 0);
         break;
-        case this.conditions[4]:
+        case this.conditions[4].name:
           // less than or equal
           result = conditionResult <= rollDiceResults.reduce((a, b) => a + b, 0);
         break;
-        case this.conditions[5]:
+        case this.conditions[5].name:
           // par
           result = rollDiceResults.reduce((a, b) => a + b, 0) % 2;
         break;
-        case this.conditions[6]:
+        case this.conditions[6].name:
           // par
           result = !(rollDiceResults.reduce((a, b) => a + b, 0) % 2);
         break;
-        case this.conditions[7]:
+        case this.conditions[7].name:
           // condition result is in
           result = rollDiceResults.includes(conditionResult);
         break;

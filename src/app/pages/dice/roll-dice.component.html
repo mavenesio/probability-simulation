@@ -28,7 +28,7 @@
                     placeholder="Select Showcase"
                     [(selected)]="numberOfDices"
                     (selectedChange)="NumberOfChange()">
-                    <nb-option *ngFor="let number of [1,2,3,4]" value="{{number}}" >{{number}}</nb-option>
+                    <nb-option *ngFor="let number of [1, 2, 3, 4]" [value]="number" >{{number}}</nb-option>
                     </nb-select>
                 </div>
                 <div class="col-md-2">
@@ -38,7 +38,7 @@
                     placeholder="Select Showcase"
                     [(selected)]="numberOfFaces"
                     (selectedChange)="NumberOfChange()">
-                    <nb-option *ngFor="let number of [2,3,4,5,6,7,8,9,10,11,12]" value="{{number}}" >{{number}}</nb-option>
+                    <nb-option *ngFor="let number of [2,3,4,5,6,7,8,9,10,11,12]" [value]="number" >{{number}}</nb-option>
                     </nb-select>
                 </div>
                 <div class="col-md-2">
@@ -46,9 +46,8 @@
                     <nb-select
                     fullWidth
                     placeholder="Select Showcase"
-                    [(selected)]="selectedCondition"
-                    (selectedChange)="conditionOnchange()">
-                    <nb-option *ngFor="let condition of conditions" value="{{condition}}" >{{condition}}</nb-option>
+                    [(selected)]="selectedCondition">
+                    <nb-option *ngFor="let condition of conditions" [value]="condition" >{{condition.name}}</nb-option>
                     </nb-select>
                 </div>
                 <div class="col-md-2">
@@ -56,14 +55,14 @@
                     <nb-select
                     fullWidth
                     placeholder="Select Showcase"
-                    [(selected)]="result"
-                    [disabled]="!selectedConditionHasResult">
-                    <nb-option *ngFor="let number of maxResults" value="{{number}}" >{{number}}</nb-option>
+                    [(selected)]="selectedResult"
+                    [disabled]="!selectedCondition.needResult">
+                    <nb-option *ngFor="let number of maxResults" [value]="number" >{{number}}</nb-option>
                     </nb-select>
                 </div>
                 <div class="col-md-2">
                     <p>&nbsp;</p>
-                    <button nbButton outline status="primary" (click)="startExperiment()"
+                    <button nbButton outline status="primary" (click)="startExperiment()" [disabled]="loading"
                     [nbSpinner]="loading" nbSpinnerStatus="primary" nbSpinnerSize="large" nbSpinnerMessage="">
                     Empezar
                     </button>
