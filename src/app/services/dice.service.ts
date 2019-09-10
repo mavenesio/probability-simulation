@@ -94,6 +94,13 @@ export class DiceService {
           result = rollDiceResults.includes(conditionResult);
         break;
     }
-    return {results: rollDiceResults, comply: result};
+    return {results: rollDiceResults, comply: this.getComplyString(result, condition)};
+  }
+
+  private getComplyString(comply: boolean, condition: string ): string {
+    if (condition === 'salga') {
+      return (comply) ? 'Salió ' : 'No salió ';
+    }
+    return (comply) ? 'Salió ' + condition.toLowerCase() : 'No salió ' + condition.toLowerCase();
   }
 }
