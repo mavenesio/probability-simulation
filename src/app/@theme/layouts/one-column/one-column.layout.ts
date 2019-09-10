@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NbSidebarService } from '@nebular/theme';
 
 @Component({
@@ -10,7 +10,7 @@ import { NbSidebarService } from '@nebular/theme';
         <ngx-header></ngx-header>
       </nb-layout-header>
 
-      <nb-sidebar class="menu-sidebar" tag="menu-sidebar" state="collapsed" responsive start>
+      <nb-sidebar class="menu-sidebar" tag="menu-sidebar" responsive start>
         <ng-content select="nb-menu"></ng-content>
       </nb-sidebar>
 
