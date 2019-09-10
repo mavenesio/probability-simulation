@@ -8,6 +8,7 @@ import { ThrowCoinResult } from '../../../models/throw-coin-result';
 })
 export class ThrowCoinComponent {
   @Input() numberOfExperiments: number = 2000;
+  @Input() probability: number = 50;
   public resultOfExperiment: ThrowCoinResult[] = [];
   public flipped: boolean = false;
   public loading = false;
@@ -20,13 +21,18 @@ export class ThrowCoinComponent {
     this.loading = true;
     this.validate();
     this.cleanResults();
-    this.resultOfExperiment = this._coinService.throwCoin(this.numberOfExperiments);
+    this.resultOfExperiment = this._coinService.throwCoin(this.numberOfExperiments, this.probability/100);
     this.loading = false;
   }
   public validate(): void {
     if (this.numberOfExperiments > this.maxNumberOfExperiments) {
       this.numberOfExperiments = this.maxNumberOfExperiments;
     }
+    if (this.probability < 0) {
+      this.probability = 0;
+    } else if (this.probability > 100) {
+        this.probability = 100;
+      }
   }
   public cleanResults(): void {
     this.resultOfExperiment = [];
