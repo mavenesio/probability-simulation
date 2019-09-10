@@ -3,8 +3,10 @@
     <nb-card-front>
         <nb-card>
             <nb-card-header>
-                <i class="nb-shuffle" (click)="toggleView()"></i>
-                Experimiento: Tirar la moneda hasta
+                <div class="d-flex justify-content-between">
+                    Experimiento: Tirar la moneda hasta
+                    <button nbButton outline status="info" (click)="toggleView()">Teoria</button>
+                </div>
             </nb-card-header>
             <nb-card-body class="example-items-rows">
                 <div class="row">
@@ -46,12 +48,12 @@
                     nbInput
                     fullWidth
                     type="number"
-                    placeholder="de 0% a 100%"
+                    placeholder="de 0 a 100"
                     name="probability"
                     [(ngModel)]="probability"
                     value="{{ probability }}"/>
                   </div>
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                     <div class="row">
                       <div class="col-md-6">
                         <p>&nbsp;</p>
@@ -78,7 +80,7 @@
                     </h1>
                     <nb-list style="max-height: 50vh;">
                       <nb-list-item *ngFor="let results of resultOfExperiment; let i=index">
-                        Salio cara en {{results.name}} intentos. ({{results.value}} veces)
+                        Salio {{selectedUntil}} en {{results.name}} intentos. ({{results.value}} veces)
                       </nb-list-item>
                     </nb-list>
                   </div>
@@ -107,8 +109,10 @@
     <nb-card-back>
       <nb-card>
         <nb-card-header>
-          <i class="nb-shuffle" (click)="toggleView()"></i>
-          Teoria
+            <div class="d-flex justify-content-between">
+                Teoria
+                <button nbButton outline status="info" (click)="toggleView()">Experimento</button>
+            </div>
         </nb-card-header>
         <nb-card-body>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare tristique suscipit. Pellentesque tincidunt at erat eu aliquet. Morbi sapien odio, feugiat at posuere vitae, volutpat nec turpis. In nulla leo, porttitor et tincidunt a, semper in ipsum. Quisque iaculis risus ut rutrum auctor. Proin at rhoncus massa, iaculis rutrum sem. Vestibulum ultrices lacinia erat, eu lacinia eros dapibus ac. Integer pellentesque vel tellus ornare venenatis. Ut vulputate ligula vulputate lacus aliquet lacinia. Etiam efficitur tristique ex id hendrerit.
