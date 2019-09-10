@@ -8,88 +8,99 @@
             </nb-card-header>
             <nb-card-body class="example-items-rows">
                 <div class="row">
-                    <div class="col-md-3">
-                        <p>Cantidad de repeticiones</p>
-                        <input
-                        nbInput
-                        fullWidth
-                        type="number"
-                        placeholder="Cantidad de repeticiones"
-                        name="numberOfExperiments"
-                        [(ngModel)]="numberOfExperiments"
-                        value="{{ numberOfExperiments }}"/>
-                    </div>
-                    <div class="col-md-3">
-                        <p>Espacio muestral </p>
-                        <input
-                        nbInput
-                        fullWidth
-                        type="text"
-                        placeholder="Cantidad de repeticiones"
-                        name="omega"
-                        value="CARA , SECA" disabled/>
-                    </div>
-                    <div class="col-md-3">
-                      <p>Repetir hasta ver</p>
-                      <nb-select
+                  <div class="col-md-2">
+                      <p>Repeticiones</p>
+                      <input
+                      nbInput
                       fullWidth
-                      placeholder="Select Showcase"
-                      [(selected)]="selectedUntil"
-                      (selectedChange)="untilOnchange($event)">
-                      <nb-option value="CARA" >CARA</nb-option>
-                      <nb-option value="SECA" >SECA</nb-option>
-                      </nb-select>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="row">
-                        <div class="col-md-6">
-                          <p>&nbsp;</p>
-                          <button nbButton outline fullWidth status="primary" (click)="startExperiment()"
-                          [nbSpinner]="loading" nbSpinnerStatus="primary" nbSpinnerSize="large" nbSpinnerMessage="">
-                          Empezar
-                          </button>
-                        </div>
-                        <div class="col-md-6">
-                          <p>&nbsp;</p>
-                          <button nbButton outline fullWidth status="primary" (click)="cleanResults()"
-                          [nbSpinner]="loading" nbSpinnerStatus="primary" nbSpinnerSize="large" nbSpinnerMessage="">
-                          Limpiar
-                          </button>
+                      type="number"
+                      placeholder="Cantidad de repeticiones"
+                      name="numberOfExperiments"
+                      [(ngModel)]="numberOfExperiments"
+                      value="{{ numberOfExperiments }}"/>
+                  </div>
+                  <div class="col-md-2">
+                      <p>Espacio muestral </p>
+                      <input
+                      nbInput
+                      fullWidth
+                      type="text"
+                      placeholder="Cantidad de repeticiones"
+                      name="omega"
+                      value="CARA , SECA" disabled/>
+                  </div>
+                  <div class="col-md-2">
+                    <p>Repetir hasta ver</p>
+                    <nb-select
+                    fullWidth
+                    placeholder="Select Showcase"
+                    [(selected)]="selectedUntil"
+                    (selectedChange)="untilOnchange($event)">
+                    <nb-option value="CARA" >CARA</nb-option>
+                    <nb-option value="SECA" >SECA</nb-option>
+                    </nb-select>
+                  </div>
+                  <div class="col-md-2">
+                    <p>Probabilidad de CARA</p>
+                    <input
+                    nbInput
+                    fullWidth
+                    type="number"
+                    placeholder="de 0% a 100%"
+                    name="probability"
+                    [(ngModel)]="probability"
+                    value="{{ probability }}"/>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p>&nbsp;</p>
+                        <button nbButton outline fullWidth status="primary" (click)="startExperiment()"
+                        [nbSpinner]="loading" nbSpinnerStatus="primary" nbSpinnerSize="large" nbSpinnerMessage="">
+                        Empezar
+                        </button>
                       </div>
-                      </div>
+                      <div class="col-md-6">
+                        <p>&nbsp;</p>
+                        <button nbButton outline fullWidth status="primary" (click)="cleanResults()"
+                        [nbSpinner]="loading" nbSpinnerStatus="primary" nbSpinnerSize="large" nbSpinnerMessage="">
+                        Limpiar
+                        </button>
                     </div>
+                  </div>
                 </div>
-                <br/>
-                <div class="row">
-                    <div class="col-md-4" *ngIf="resultOfExperiment.length > 0">
-                      <h1>
-                      Resultados
-                      </h1>
-                      <nb-list style="max-height: 50vh;">
-                        <nb-list-item *ngFor="let results of resultOfExperiment; let i=index">
-                          Salio cara en {{results.name}} intentos. ({{results.value}} veces)
-                        </nb-list-item>
-                      </nb-list>
+              </div>
+              <br/>
+              <div class="row">
+                  <div class="col-md-4" *ngIf="resultOfExperiment.length > 0">
+                    <h1>
+                    Resultados
+                    </h1>
+                    <nb-list style="max-height: 50vh;">
+                      <nb-list-item *ngFor="let results of resultOfExperiment; let i=index">
+                        Salio cara en {{results.name}} intentos. ({{results.value}} veces)
+                      </nb-list-item>
+                    </nb-list>
+                  </div>
+                  <div class="col-md-8" *ngIf="resultOfExperiment.length > 0">
+                    <h1>
+                    Graficos
+                    </h1>
+                    <div style="max-height: 50vh;">
+                      <ngx-charts-bar-horizontal
+                      [view]="view"
+                      [results]="resultOfExperiment"
+                      legendTitle="Tiradas"
+                      legend="true"
+                      showXAxisLabel="true"
+                      showYAxisLabel="true"
+                      showDataLabel="true"
+                      showGridLines="true"
+                      scheme="nightLights">
+                      </ngx-charts-bar-horizontal>
                     </div>
-                    <div class="col-md-8" *ngIf="resultOfExperiment.length > 0">
-                      <h1>
-                      Graficos
-                      </h1>
-                      <div style="max-height: 50vh;">
-                        <ngx-charts-bar-horizontal
-                        [view]="view"
-                        [results]="resultOfExperiment"
-                        legendTitle="Tiradas"
-                        legend="true"
-                        showXAxisLabel="true"
-                        showYAxisLabel="true"
-                        showDataLabel="true"
-                        showGridLines="true"
-                        scheme="nightLights">
-                        </ngx-charts-bar-horizontal>
-                      </div>
-                    </div>
-                </div>
+                  </div>
+              </div>
             </nb-card-body>
           </nb-card>
     </nb-card-front>

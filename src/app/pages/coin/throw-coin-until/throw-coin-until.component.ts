@@ -8,6 +8,7 @@ import { CoinService } from '../../../services/coin.service';
 })
 export class ThrowCoinUntilComponent {
   @Input() numberOfExperiments: number = 2000;
+  @Input() probability: number = 50;
   public resultOfExperiment: ThrowCoinResult[] = [];
   public loading: boolean = false;
   public flipped: boolean = false;
@@ -23,7 +24,7 @@ export class ThrowCoinUntilComponent {
     this.loading = true;
     this.cleanResults();
     this.validate();
-    this.resultOfExperiment = this._coinService.throwCointUntil(this.numberOfExperiments, this.selectedUntil);
+    this.resultOfExperiment = this._coinService.throwCointUntil(this.numberOfExperiments, this.selectedUntil, this.probability/100);
     this.loading = false;
   }
   public validate(): void {
