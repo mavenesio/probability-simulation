@@ -9,11 +9,11 @@ export class CoinService {
 
   constructor() { }
 
-  public throwCoin(repetitions: number): ThrowCoinResult[] {
+  public throwCoin(repetitions: number, probability: number): ThrowCoinResult[] {
     // experiment
     const resultsLog = [];
     for (let i = 0 ; i < repetitions; i++) {
-      resultsLog.push(this.getThrownOutCoin());
+      resultsLog.push(this.getThrownOutCoin(probability));
     }
     // parse experiment
     return(
@@ -22,14 +22,14 @@ export class CoinService {
   }
 
 
-  public throwCointUntil(repetitions: number, until: string): ThrowCoinResult[] {
+  public throwCointUntil(repetitions: number, until: string, probability: number): ThrowCoinResult[] {
     // experiment
     const resultsLog = [];
     for (let i = 0 ; i < repetitions; i++) {
       let experimentIsOver = false;
       let count: number = 0;
       while (!experimentIsOver) {
-        const cointThrow = this.getThrownOutCoin();
+        const cointThrow = this.getThrownOutCoin(probability);
         count++;
         experimentIsOver = (cointThrow === until);
       }
@@ -40,8 +40,9 @@ export class CoinService {
   }
 
   // private functions
-  private getThrownOutCoin(): string {
-    return this.omega[Math.round(Math.random())];
+  private getThrownOutCoin(probability: number): string {
+    const random = (Math.random() > (probability)) ? 1 : 0;
+    return this.omega[random];
   }
 
   private getResults(resultsLog: number[] ): ThrowCoinResult[] {
