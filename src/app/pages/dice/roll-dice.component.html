@@ -46,7 +46,8 @@
                     <nb-select
                     fullWidth
                     placeholder="Select Showcase"
-                    [(selected)]="selectedCondition">
+                    [(selected)]="selectedCondition"
+                    (selectedChange)="onConditionChange()">
                     <nb-option *ngFor="let condition of conditions" [value]="condition" >{{condition.name}}</nb-option>
                     </nb-select>
                 </div>
@@ -81,13 +82,13 @@
                 </div>
                 <div class="col-md-8" style="max-height: 50vh;" *ngIf="resultOfExperiment.length > 0">
                   <h1>
-                    Grafico del ultimo experimento
+                    Grafico
                   </h1>
                   <div style="max-height: 50vh;">
                       <ngx-charts-pie-grid
                       [view]="view"
                       [results]="resultOfExperiment"
-                      legend="true"
+                      labels="true"
                       scheme="nightLights">
                     </ngx-charts-pie-grid>
                   </div>

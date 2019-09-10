@@ -57,10 +57,17 @@ export class RollDiceComponent {
   }
   public NumberOfChange() {
     this.maxResults = [];
-    const max: number = this.numberOfDices * this.numberOfFaces;
+    const max = (this.selectedCondition.name === 'salga')
+    ? this.numberOfFaces
+    : this.numberOfDices * this.numberOfFaces;
     for ( let i = 1; i <= max ; i++) {
       this.maxResults.push(i);
     }
+    this.selectedResult = 1;
+  }
+
+  public onConditionChange() {
+    this.NumberOfChange();
   }
 
   public toggleView() {
