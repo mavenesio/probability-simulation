@@ -69,7 +69,7 @@
                       </h1>
                       <nb-list style="max-height: 50vh;">
                           <nb-list-item *ngFor="let result of resultOfExperiment">
-                              {{result.name}}: {{result.value}}
+                            (P: {{result.probability}}) {{ result.name}}: {{result.value}}
                           </nb-list-item>
                       </nb-list>
                     </div>

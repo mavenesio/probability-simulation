@@ -21,7 +21,7 @@ export class ThrowCoinComponent {
     this.loading = true;
     this.validate();
     this.cleanResults();
-    this.resultOfExperiment = this._coinService.throwCoin(this.numberOfExperiments, this.probability/100);
+    this.resultOfExperiment = this._coinService.throwCoin(this.numberOfExperiments, this.probability / 100);
     this.loading = false;
   }
   public validate(): void {
