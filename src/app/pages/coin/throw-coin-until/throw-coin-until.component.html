@@ -79,8 +79,8 @@
                     Resultados
                     </h1>
                     <nb-list style="max-height: 50vh;">
-                      <nb-list-item *ngFor="let results of resultOfExperiment; let i=index">
-                        Salio {{selectedUntil}} en {{results.name}} intentos. ({{results.value}} veces)
+                      <nb-list-item *ngFor="let result of resultOfExperiment; let i=index">
+                        (P: {{result.probability}})Salio {{selectedUntil}} en {{result.name}} intentos. ({{result.value}} veces)
                       </nb-list-item>
                     </nb-list>
                   </div>
