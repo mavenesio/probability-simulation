@@ -1,14 +1,20 @@
 <div class="header-container">
-  <div class="logo-container">
-    <a class="logo" href="#" (click)="toggleSidebar()">
+  <div class=" logo-container">
+    <a (click)="toggleSidebar()" href="#" class="sidebar-toggle">
+      <nb-icon icon="menu-2-outline"></nb-icon>
+    </a>
+    <a class="logo" href="#" (click)="navigateHome()">
+      <span>| FIUBA </span>
+    </a>
+    <div style="justify-content: flex-end">
       <img src="../../../../assets/images/fiuba-logo-white.png" width="50" height="50"><img>
-      </a>
-      <a class="logo" href="#" (click)="navigateHome()">
-        <span>| FIUBA </span>
-      </a>
+    </div>
   </div>
 </div>
 
+
+
+<!--
 <div class="header-container">
   <nb-actions size="small">
 
@@ -17,3 +23,4 @@
     </nb-action>
   </nb-actions>
 </div>
+-->
