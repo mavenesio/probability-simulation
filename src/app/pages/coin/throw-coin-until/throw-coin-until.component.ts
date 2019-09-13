@@ -29,6 +29,11 @@ export class ThrowCoinUntilComponent {
   }
   public validate(): void {
     if (this.numberOfExperiments > this.maxNumberOfExperiments) this.numberOfExperiments = this.maxNumberOfExperiments;
+    if (this.probability <= 0) {
+      this.probability = 1;
+    } else if (this.probability > 100) {
+        this.probability = 100;
+      }
   }
   public untilOnchange( event): void {
     this.selectedUntil = event;
