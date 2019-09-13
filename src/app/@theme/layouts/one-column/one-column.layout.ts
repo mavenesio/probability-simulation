@@ -18,6 +18,9 @@ import { NbSidebarService } from '@nebular/theme';
         <ng-content select="router-outlet"></ng-content>
       </nb-layout-column>
 
+      <nb-layout-footer>
+        <ngx-footer></ngx-footer>
+      </nb-layout-footer>
     </nb-layout>
   `,
 })
