@@ -31,6 +31,7 @@ npm-debug.log
 testem.log
 /typings
 /docs
+/src/environments/**
 
 # e2e
 /e2e/*.js
@@ -40,7 +41,3 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# env
-
-src/environments/environment.prod.ts
-src/environments/environment.ts
