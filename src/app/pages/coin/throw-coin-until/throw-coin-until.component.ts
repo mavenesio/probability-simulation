@@ -24,16 +24,15 @@ export class ThrowCoinUntilComponent {
     this.loading = true;
     this.cleanResults();
     this.validate();
-    this.resultOfExperiment = this._coinService.throwCointUntil(this.numberOfExperiments, this.selectedUntil, this.probability / 100);
+    this.resultOfExperiment = this._coinService.throwCointUntil(this.numberOfExperiments,
+      this.selectedUntil, parseFloat('0.' + this.probability));
     this.loading = false;
   }
   public validate(): void {
     if (this.numberOfExperiments > this.maxNumberOfExperiments) this.numberOfExperiments = this.maxNumberOfExperiments;
     if (this.probability <= 0) {
       this.probability = 1;
-    } else if (this.probability > 100) {
-        this.probability = 100;
-      }
+    }
   }
   public untilOnchange( event): void {
     this.selectedUntil = event;

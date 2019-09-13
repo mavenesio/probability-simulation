@@ -43,15 +43,23 @@
                     </nb-select>
                   </div>
                   <div class="col-md-2">
-                    <p>Probabilidad de CARA</p>
-                    <input
-                    nbInput
-                    fullWidth
-                    type="number"
-                    placeholder="de 0 a 100"
-                    name="probability"
-                    [(ngModel)]="probability"
-                    value="{{ probability }}"/>
+                      <p>P(CARA)</p>
+                      <input
+                      nbInput
+                      fullWidth
+                      type="text"
+                      style="width: 30%"
+                      placeholder="Cantidad de repeticiones"
+                      name="omeag"
+                      value="0." disabled/>
+                      <input
+                      nbInput
+                      style="width: 70%"
+                      type="number"
+                      placeholder="de 0 a 100"
+                      name="probability"
+                      [(ngModel)]="probability"
+                      value="{{ probability }}"/>
                   </div>
                   <div class="col-md-4">
                     <div class="row">
