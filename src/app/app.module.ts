@@ -43,7 +43,7 @@ import { environment } from '../environments/environment';
     NbChatModule.forRoot({
       messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
     }),
-    AngularFireModule.initializeApp(environment.firebase, 'probabilidad-fiuba'),
+    AngularFireModule.initializeApp(environment.firebase, 'probability-simulations'),
     CoreModule.forRoot(),
   ],
   bootstrap: [AppComponent],
