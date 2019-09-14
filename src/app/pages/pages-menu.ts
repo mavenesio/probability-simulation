@@ -8,33 +8,27 @@ export const MENU_ITEMS: NbMenuItem[] = [
     home: true,
   },
   {
-    title: 'FEATURES',
+    title: 'MONEDAS',
     group: true,
   },
-
   {
-    title: 'Moneda',
+    title: 'Tirar moneda',
     icon: 'radio-button-on-outline',
-    children: [
-      {
-        title: 'Tirar moneda',
-        link: 'coin/throw-coin',
-      },
-      {
-        title: 'Tirar moneda hasta',
-        link: 'coin/throw-coin-until',
-      },
-    ],
+    link: 'coin/throw-coin',
   },
   {
-    title: 'Dado',
+    title: 'Tirar moneda hasta',
+    icon: 'alert-circle-outline',
+    link: 'coin/throw-coin-until',
+  },
+  {
+    title: 'DADOS',
+    group: true,
+  },
+  {
+    title: 'Tirar dado hasta',
     icon: 'square-outline',
-    children: [
-      {
-        title: 'Tirar dado hasta',
-        link: 'dice/roll-dice-until',
-      },
-    ],
+    link: 'dice/roll-dice-until',
   },
   /*
   {
