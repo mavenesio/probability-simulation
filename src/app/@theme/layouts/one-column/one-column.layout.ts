@@ -10,7 +10,12 @@ import { NbSidebarService } from '@nebular/theme';
         <ngx-header></ngx-header>
       </nb-layout-header>
 
-      <nb-sidebar class="menu-sidebar" tag="menu-sidebar" responsive start>
+      <nb-sidebar
+        class="menu-sidebar"
+        tag="menu-sidebar"
+        state="compacted"
+        [responsive]="true"
+        >
         <ng-content select="nb-menu"></ng-content>
       </nb-sidebar>
 
@@ -28,6 +33,6 @@ export class OneColumnLayoutComponent{
   constructor(private sidebarService: NbSidebarService) {}
 
   public collapse() {
-    this.sidebarService.collapse('menu-sidebar');
+    // this.sidebarService.collapse('menu-sidebar');
   }
 }
