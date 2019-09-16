@@ -11,6 +11,7 @@ export class ThrowCoinComponent {
   @Input() probability: number = 50;
   public resultOfExperiment: ThrowCoinResult[] = [];
   public flipped: boolean = false;
+  public revealed: boolean = false;
   public loading = false;
   public view = [500, 300];
   private maxNumberOfExperiments: number = 100000000;
@@ -34,5 +35,9 @@ export class ThrowCoinComponent {
   }
   public toggleView() {
     this.flipped = !this.flipped;
+  }
+
+  public toggleRevealedView(): void {
+    this.revealed = !this.revealed;
   }
 }
