@@ -97,11 +97,14 @@
                             </div></nb-card-header>
                         <nb-card-body>
                           <div *ngIf="resultOfExperiment.length > 0">
-                            <ngx-charts-pie-grid
-                              [results]="resultOfExperiment"
-                              legend="true"
-                              scheme="nightLights">
-                            </ngx-charts-pie-grid>
+                            <div class="d-flex justify-content-center">
+                              <ngx-charts-pie-grid
+                                [view]="view"
+                                [results]="resultOfExperiment"
+                                legend="true"
+                                scheme="nightLights">
+                              </ngx-charts-pie-grid>
+                            </div>
                           </div>
                         </nb-card-body>
                       </nb-card>

@@ -13,7 +13,7 @@ export class ThrowCoinComponent {
   public flipped: boolean = false;
   public revealed: boolean = false;
   public loading = false;
-  public view = [500, 300];
+  public view = [330, 500];
   private maxNumberOfExperiments: number = 100000000;
 
   constructor(private _coinService: CoinService) {}
