@@ -12,6 +12,7 @@ export class ThrowCoinUntilComponent {
   public resultOfExperiment: ThrowCoinResult[] = [];
   public loading: boolean = false;
   public flipped: boolean = false;
+  public revealed: boolean = false;
   public selectedUntil: string;
   public view = [600 , 400];
   private maxNumberOfExperiments: number = 100000000;
@@ -40,6 +41,11 @@ export class ThrowCoinUntilComponent {
   public toggleView(): void {
     this.flipped = !this.flipped;
   }
+
+  public toggleRevealedView(): void {
+    this.revealed = !this.revealed;
+  }
+
   public cleanResults(): void {
     this.resultOfExperiment = [];
   }

@@ -81,36 +81,49 @@
                 </div>
               </div>
               <br/>
-              <div class="row">
-                  <div class="col-md-4" *ngIf="resultOfExperiment.length > 0">
-                    <h1>
-                    Resultados
-                    </h1>
-                    <nb-list style="max-height: 50vh;">
-                      <nb-list-item *ngFor="let result of resultOfExperiment; let i=index">
-                        (P: {{result.probability}})Salio {{selectedUntil}} en {{result.name}} intentos. ({{result.value}} veces)
-                      </nb-list-item>
-                    </nb-list>
-                  </div>
-                  <div class="col-md-8" *ngIf="resultOfExperiment.length > 0">
-                    <h1>
-                    Graficos
-                    </h1>
-                    <div style="max-height: 50vh;">
-                      <ngx-charts-bar-horizontal
-                      [view]="view"
-                      [results]="resultOfExperiment"
-                      legendTitle="Tiradas"
-                      legend="true"
-                      showXAxisLabel="true"
-                      showYAxisLabel="true"
-                      showDataLabel="true"
-                      showGridLines="true"
-                      scheme="nightLights">
-                      </ngx-charts-bar-horizontal>
-                    </div>
-                  </div>
-              </div>
+              <nb-reveal-card [showToggleButton]="false" [revealed]="revealed">
+                  <nb-card-front >
+                    <nb-card accent="primary" style="height: 50vh;">
+                      <nb-card-header>
+                        <div class="d-flex justify-content-between">
+                          Resultados
+                          <button nbButton outline status="info" (click)="toggleRevealedView()">Grafico</button>
+                        </div>
+                      </nb-card-header>
+                      <nb-card-body>
+                        <nb-list >
+                              <nb-list-item *ngFor="let result of resultOfExperiment; let i=index">
+                                  (P: {{result.probability}})Salio {{selectedUntil}} en {{result.name}} intentos. ({{result.value}} veces)
+                              </nb-list-item>
+                          </nb-list>
+                      </nb-card-body>
+                    </nb-card>
+                  </nb-card-front>
+                  <nb-card-back>
+                    <nb-card accent="primary" style="height: 50vh;">
+                      <nb-card-header>
+                        <div class="d-flex justify-content-between">
+                          Grafico
+                          <button nbButton outline status="info" (click)="toggleRevealedView()">Resultados</button>
+                        </div>
+                      </nb-card-header>
+                      <nb-card-body>
+                        <div *ngIf="resultOfExperiment.length > 0">
+                          <ngx-charts-bar-horizontal
+                          [results]="resultOfExperiment"
+                          legendTitle="Tiradas"
+                          legend="true"
+                          legendPosition="below"
+                          showDataLabel="true"
+                          scheme="nightLights"
+                          showYAxisLabel="true"
+                          >
+                          </ngx-charts-bar-horizontal>
+                       </div>
+                      </nb-card-body>
+                    </nb-card>
+                  </nb-card-back>
+                </nb-reveal-card>
             </nb-card-body>
           </nb-card>
     </nb-card-front>
