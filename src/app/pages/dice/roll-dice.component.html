@@ -71,30 +71,53 @@
                     </button>
                 </div>
             </div>
-            <div class="row" >
-                <div class="col-md-4" *ngIf="resultOfExperiment.length > 0">
-                  <h1>
-                  Resultados
-                  </h1>
-                  <nb-list style="max-height: 50vh;">
-                      <nb-list-item *ngFor="let result of resultOfExperiment">
-                          {{result.name}}: {{result.value}}
-                      </nb-list-item>
-                  </nb-list>
-                </div>
-                <div class="col-md-8" style="max-height: 50vh;" *ngIf="resultOfExperiment.length > 0">
-                  <h1>
-                    Grafico
-                  </h1>
-                  <div style="max-height: 50vh;">
-                      <ngx-charts-pie-grid
-                      [view]="view"
-                      [results]="resultOfExperiment"
-                      labels="true"
-                      scheme="nightLights">
-                    </ngx-charts-pie-grid>
-                  </div>
-                </div>
+            <br/>
+            <div class="row">
+              <div class="col-md-12">
+                <nb-reveal-card [showToggleButton]="false" [revealed]="revealed">
+                  <nb-card-front>
+                    <nb-card accent="primary" style="height: 50vh;">
+                      <nb-card-header>
+                          <div class="d-flex justify-content-between">
+                            Resultados
+                            <button nbButton outline status="info" (click)="toggleRevealedView()">Grafico</button>
+                          </div>
+                      </nb-card-header>
+                      <nb-card-body>
+                        <nb-list style="max-height: 50vh;">
+                            <nb-list-item *ngFor="let result of resultOfExperiment">
+                                {{result.name}}: {{result.value}}
+                            </nb-list-item>
+                        </nb-list>
+                      </nb-card-body>
+                    </nb-card>
+                  </nb-card-front>
+                  <nb-card-back>
+                    <nb-card accent="primary" style="height: 50vh;">
+                      <nb-card-header>
+                        <div class="d-flex justify-content-between">
+                          Grafico
+                          <button nbButton outline status="info" (click)="toggleRevealedView()">Resultados</button>
+                        </div>
+                      </nb-card-header>
+                      <nb-card-body>
+                        <div *ngIf="resultOfExperiment.length > 0">
+                          <div class="d-flex justify-content-center">
+                            <div style="max-height: 50vh;">
+                              <ngx-charts-pie-grid
+                                [view]="view"
+                                [results]="resultOfExperiment"
+                                labels="true"
+                                scheme="nightLights">
+                              </ngx-charts-pie-grid>
+                            </div>
+                          </div>
+                        </div>
+                      </nb-card-body>
+                    </nb-card>
+                  </nb-card-back>
+                </nb-reveal-card>
+              </div>
             </div>
           </nb-card-body>
       </nb-card>

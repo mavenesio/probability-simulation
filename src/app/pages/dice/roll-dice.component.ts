@@ -11,10 +11,11 @@ export class RollDiceComponent {
   @Input() numberOfFaces: number;
   @Input() selectedResult: number;
 
-  public view = [500, 300];
   public selectedCondition;
   public loading = false;
   public flipped: boolean = false;
+  public revealed: boolean = false;
+  public view = [330, 500];
   public maxResults: number[] = [];
   public conditions = [];
   public resultOfExperiment: any[] = [];
@@ -72,5 +73,9 @@ export class RollDiceComponent {
 
   public toggleView() {
     this.flipped = !this.flipped;
+  }
+
+  public toggleRevealedView(): void {
+    this.revealed = !this.revealed;
   }
 }
