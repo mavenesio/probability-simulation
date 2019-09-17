@@ -5,8 +5,8 @@ import { PagesComponent } from './pages.component';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 
-import { ThrowCoinComponent } from './coin/throw-coin/throw-coin.component';
-import { ThrowCoinUntilComponent } from './coin/throw-coin-until/throw-coin-until.component';
+import { FlipCoinComponent } from './coin/flip-coin/flip-coin.component';
+import { FlipCoinUntilComponent } from './coin/flip-coin-until/flip-coin-until.component';
 import { RollDiceComponent } from './dice/roll-dice.component';
 
 const routes: Routes = [{
@@ -18,12 +18,12 @@ const routes: Routes = [{
       component: DashboardComponent,
     },
     {
-      path: 'coin/throw-coin',
-      component: ThrowCoinComponent,
+      path: 'coin/flip-coin',
+      component: FlipCoinComponent,
     },
     {
-      path: 'coin/throw-coin-until',
-      component: ThrowCoinUntilComponent,
+      path: 'coin/flip-coin-until',
+      component: FlipCoinUntilComponent,
     },
     {
       path: 'dice/roll-dice-until',

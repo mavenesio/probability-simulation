@@ -14,12 +14,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Tirar moneda',
     icon: 'radio-button-on-outline',
-    link: 'coin/throw-coin',
+    link: 'coin/flip-coin',
   },
   {
     title: 'Tirar moneda hasta',
     icon: 'alert-circle-outline',
-    link: 'coin/throw-coin-until',
+    link: 'coin/flip-coin-until',
   },
   {
     title: 'DADOS',
