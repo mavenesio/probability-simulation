@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ThrowCoinResult } from '../../../models/throw-coin-result';
+import { FlipCoinResult } from '../../../models/flip-coin-result';
 import { CoinService } from '../../../services/coin.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { CoinService } from '../../../services/coin.service';
 export class ThrowCoinUntilComponent {
   @Input() numberOfExperiments: number = 2000;
   @Input() probability: number = 50;
-  public resultOfExperiment: ThrowCoinResult[] = [];
+  public resultOfExperiment: FlipCoinResult[] = [];
   public loading: boolean = false;
   public flipped: boolean = false;
   public revealed: boolean = false;
@@ -25,8 +25,8 @@ export class ThrowCoinUntilComponent {
     this.loading = true;
     this.cleanResults();
     this.validate();
-    this.resultOfExperiment = this._coinService.throwCointUntil(this.numberOfExperiments,
-      this.selectedUntil, parseFloat('0.' + this.probability));
+    this.resultOfExperiment = this._coinService.flipCointUntilExperiment(this.numberOfExperiments,
+      this.selectedUntil, parseFloat('0.' + this.probability), 1);
     this.loading = false;
   }
   public validate(): void {
