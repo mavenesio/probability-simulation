@@ -9,7 +9,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ThemeModule } from '../../../@theme/theme.module';
 import { PieChartModule } from '@swimlane/ngx-charts';
 
-import { ThrowCoinComponent } from './throw-coin.component';
+import { FlipCoinComponent } from './flip-coin.component';
 
 @NgModule({
   imports: [
@@ -25,7 +25,7 @@ import { ThrowCoinComponent } from './throw-coin.component';
     PieChartModule,
   ],
   declarations: [
-    ThrowCoinComponent,
+    FlipCoinComponent,
   ],
 })
-export class ThrowCoinModule { }
+export class FlipCoinModule { }

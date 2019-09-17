@@ -3,10 +3,10 @@ import { CoinService } from '../../../services/coin.service';
 import { FlipCoinResult } from '../../../models/flip-coin-result';
 
 @Component({
-  selector: 'ngx-throw-coin',
-  templateUrl: './throw-coin.component.html',
+  selector: 'ngx-flip-coin',
+  templateUrl: './flip-coin.component.html',
 })
-export class ThrowCoinComponent {
+export class FlipCoinComponent {
   @Input() numberOfExperiments: number = 2000;
   @Input() probability: number = 50;
   public resultOfExperiment: FlipCoinResult[] = [];
