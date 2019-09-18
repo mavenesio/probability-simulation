@@ -47,39 +47,35 @@
                       <input
                       nbInput
                       fullWidth
-                      type="text"
-                      style="width: 30%"
-                      placeholder="Cantidad de repeticiones"
-                      name="omeag"
-                      value="0." disabled/>
-                      <input
-                      nbInput
-                      style="width: 70%"
                       type="number"
-                      placeholder="de 0 a 100"
                       name="probability"
                       [(ngModel)]="probability"
                       value="{{ probability }}"/>
                   </div>
-                  <div class="col-md-4">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <p>&nbsp;</p>
-                        <button nbButton outline fullWidth status="primary" (click)="startExperiment()"
-                        [nbSpinner]="loading" nbSpinnerStatus="primary" nbSpinnerSize="large" nbSpinnerMessage="">
-                        Empezar
-                        </button>
-                      </div>
-                      <div class="col-md-6">
+                  <div class="col-md-2">
+                      <p>Ocurrencia</p>
+                      <nb-select
+                      fullWidth
+                      placeholder="Select Showcase"
+                      [(selected)]="numberOfSightings">
+                      <nb-option *ngFor="let number of [1,2,3,4,5,6]" [value]="number" >{{number}}</nb-option>
+                      </nb-select>
+                  </div>
+                  <div class="col-md-2">
+                      <p>&nbsp;</p>
+                      <button nbButton outline fullWidth status="primary" (click)="startExperiment()"
+                      [nbSpinner]="loading" nbSpinnerStatus="primary" nbSpinnerSize="large" nbSpinnerMessage="">
+                      Empezar
+                      </button>
+                      <!--
                         <p>&nbsp;</p>
                         <button nbButton outline fullWidth status="primary" (click)="cleanResults()"
                         [nbSpinner]="loading" nbSpinnerStatus="primary" nbSpinnerSize="large" nbSpinnerMessage="">
                         Limpiar
                         </button>
-                    </div>
+                    -->
                   </div>
                 </div>
-              </div>
               <br/>
               <nb-reveal-card [showToggleButton]="false" [revealed]="revealed">
                   <nb-card-front >

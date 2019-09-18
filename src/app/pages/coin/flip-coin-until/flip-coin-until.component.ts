@@ -15,10 +15,13 @@ export class FlipCoinUntilComponent {
   public revealed: boolean = false;
   public selectedUntil: string;
   public view = [600 , 400];
+  public numberOfSightings: number;
   private maxNumberOfExperiments: number = 100000000;
+
 
   constructor(private _coinService: CoinService) {
     this.selectedUntil = 'CARA';
+    this.numberOfSightings = 1;
   }
 
   public startExperiment() {
@@ -26,7 +29,7 @@ export class FlipCoinUntilComponent {
     this.cleanResults();
     this.validate();
     this.resultOfExperiment = this._coinService.flipCointUntilExperiment(this.numberOfExperiments,
-      this.selectedUntil, parseFloat('0.' + this.probability), 1);
+      this.selectedUntil, parseFloat('0.' + this.probability), this.numberOfSightings);
     this.loading = false;
   }
   public validate(): void {
