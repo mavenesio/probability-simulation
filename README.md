@@ -4,9 +4,9 @@ This is a college project with the only finality of the simulate different exper
 
 # Sources
 
-[Akveo template] (https://akveo.com/ngx-admin/pages/dashboard)
-[Nebular] (https://akveo.github.io/nebular/)
-[ngx charts] (https://swimlane.gitbook.io/ngx-charts/)
+[Akveo template] (https://akveo.com/ngx-admin/pages/dashboard)  
+[Nebular] (https://akveo.github.io/nebular/)  
+[ngx charts] (https://swimlane.gitbook.io/ngx-charts/)  
 
 # Web site
 
